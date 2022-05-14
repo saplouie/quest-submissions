@@ -9,10 +9,14 @@
 
 4. Using this picture below, explain...
 
-What the error message means. -The error means the type that needs to be returned is of type String and doesn't the actual type returned, an Optional String.
+What the error message means. -The error means the type that needs to be returned is of type String and doesn't match the actual type returned, an Optional String.
 
-Why we're getting this error - thing[0x03] is the element of a dictionary with type Optional String. The main function is wanting a return type of String.
+Why we're getting this error - thing[0x03] is an element of a dictionary with type Optional String. The main function is wanting a return type of String.
 
-How to fix it - We can fix it by changing the return value to an option type
+How to fix it - We can fix it by changing the return value to an optional type
 ![image](https://user-images.githubusercontent.com/26511703/168449089-2dc26619-52ae-466e-9844-9b6dcda206f8.png)
+
+Alternatively, the return can be unwrapped with the following statement:
+
+return thing[0x03]!
 
