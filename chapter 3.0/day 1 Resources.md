@@ -13,7 +13,7 @@
 - resources can only be created within a contract, as "create" can only be used within a contract.
 
 5. What is the type of the resource below?
-- AnyResource?
+- @Jacob
  
 pub resource Jacob {
 
