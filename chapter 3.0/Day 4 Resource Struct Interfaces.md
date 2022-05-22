@@ -37,7 +37,9 @@ pub contract Stuff {
 
     pub struct interface ITest {
       pub var greeting: String
-      pub var favouriteFruit: String
+      pub var favouriteFruit: String 
+      pub fun changeGreeting(newGreeting: String): String // Added to expose to fixThis()
+
     }
 
     // ERROR:
@@ -45,7 +47,8 @@ pub contract Stuff {
     // to structure interface Stuff.ITest`
     pub struct Test: ITest {
       pub var greeting: String
-
+      pub var favouriteFruit: String  // Added due to requirement in ITest
+      
       pub fun changeGreeting(newGreeting: String): String {
         self.greeting = newGreeting
         return self.greeting // returns the new greeting
@@ -53,6 +56,7 @@ pub contract Stuff {
 
       init() {
         self.greeting = "Hello!"
+        self.favouriteFruit = "Apple" // init required for new variable
       }
     }
 
