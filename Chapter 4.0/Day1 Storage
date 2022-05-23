@@ -55,7 +55,7 @@ transaction() {
     let carResource <- Cars.createCar()
     signer.save(<- carResource, to: /storage/MyCar03) 
     let borrowResource = signer.borrow<&Cars.Car>(from: /storage/MyCar03)
-                          ?? panic("A `@Cars.Car` resource does not live here.")
+                          ?? panic("A `&Cars.Car` resource does not live here.")
     log(borrowResource.Make)
   }
   execute {
