@@ -12,7 +12,7 @@ private is accessed by account owner and who ever the owner gives access to.
 .borrow() - gets a reference to the data in account storage
 
 4. Explain why we couldn't save something to our account storage inside of a script.
-The prepare phase is where data accessed and saved.
+The prepare phase is where data is accessed and saved.
 
 5. Explain why I couldn't save something to your account.
 Only the account owner has access to /storage, so I would have to sign for that save() transaction.
