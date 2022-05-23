@@ -14,11 +14,50 @@ private is accessed by account owner and who ever the owner gives access to.
 4. Explain why we couldn't save something to our account storage inside of a script.
 The prepare phase is where data accessed and saved.
 
-Explain why I couldn't save something to your account.
+5. Explain why I couldn't save something to your account.
+Only the account owner has access to /storage, so I would have to sign for that save() transaction.
 
+6. Define a contract that returns a resource that has at least 1 field in it. Then, write 2 transactions:
+pub contract Cars {
+  pub resource Car {
+    pub var Make: String
+    init() {
+      self.Make = "Ford"
+    }
+  }
 
-Define a contract that returns a resource that has at least 1 field in it. Then, write 2 transactions:
+  pub fun createCar(): @Car {
+    return <- create Car()
+  }
+}
+
 
 A transaction that first saves the resource to account storage, then loads it out of account storage, logs a field inside the resource, and destroys it.
+import Cars from 0x01
+transaction() {
+  prepare(signer: AuthAccount) {
+    let carResource <- Cars.createCar()
+    signer.save(<- carResource, to: /storage/MyCar02) 
+    let loadResource <- signer.load<@Cars.Car>(from: /storage/MyCar02)
+                          ?? panic("A `@Cars.Car` resource does not live here.")
+    log(loadResource.Make)
+    destroy loadResource
+  }
+  execute {
+  }
+}
+
 
 A transaction that first saves the resource to account storage, then borrows a reference to it, and logs a field inside the resource.
+import Cars from 0x01
+transaction() {
+  prepare(signer: AuthAccount) {
+    let carResource <- Cars.createCar()
+    signer.save(<- carResource, to: /storage/MyCar03) 
+    let borrowResource = signer.borrow<&Cars.Car>(from: /storage/MyCar03)
+                          ?? panic("A `@Cars.Car` resource does not live here.")
+    log(borrowResource.Make)
+  }
+  execute {
+  }
+}
