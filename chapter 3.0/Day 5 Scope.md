@@ -73,7 +73,7 @@ This is a script that imports the contract above:
 import SomeContract from 0x01
 
 pub fun main() {
-  /**************/  a(read,write)    b(read)
+  /**************/  a(read)    b(read)
   /*** AREA 4 ***/  c(none)          d(none)
   /**************/ Functions that can be called: publicFunc
 }
