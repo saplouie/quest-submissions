@@ -1,4 +1,6 @@
 1. Why did we add a Collection to this contract? List the two main reasons.
+We need a container to hold multiple NFTs in one path since only one item can be saved at a path
+
 
 2. What do you have to do if you have resources "nested" inside of another resource? ("Nested resources")
 
