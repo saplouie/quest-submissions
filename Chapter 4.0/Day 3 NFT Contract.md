@@ -11,7 +11,7 @@ Add some additional fields, like traits for the NFT like color, size, names.
 Add some change functions for the fields. For example, if the NFT has levels, maybe have a function to increase values.
 Main problem will be to determine who should have access to the change functions and being able to read the fields. Resources interfaces will be necessary to restrict access.
 
-Idea #1: Do we really want everyone to be able to mint an NFT? 🤔. No, there should be a restriction and only the minter should be able to mint.
+Idea #1: Do we really want everyone to be able to mint an NFT? 🤔. No, there should be a restriction and only certain minters should be able to mint.
 
 Idea #2: If we want to read information about our NFTs inside our Collection, right now we have to take it out of the Collection to do so. Is this good?
 It's better to use a reference to the NFT rather moving the NFTs around.
