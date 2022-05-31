@@ -31,10 +31,10 @@ pub contract CryptoPoops: NonFungibleToken {
     }
   }
   pub resource interface CollectionPublic {
-    pub fun deposit(token: @NFT)
+    pub fun deposit(token: @NonFungibleToken.NFT)
     pub fun getIDs(): [UInt64]
     pub fun borrowAuthNFT(id: UInt64): &NFT
-    pub fun withdraw(withdrawID: UInt64)
+    
   }
 
   pub resource Collection: NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic, CollectionPublic {
@@ -100,8 +100,24 @@ pub contract CryptoPoops: NonFungibleToken {
 
 You will have to write all the transactions to set up the accounts, mint the NFTs, and then the scripts to read the NFT's metadata. We have done most of this in the chapters up to this point, so you can look for help there :)
 
-Create collection Transaction:
+Create collection Transaction as 0x03:
 
-Mint NFT transaction:
+import CryptoPoops from 0x01
+import NonFungibleToken from 0x02
+
+transaction() {
+  prepare(signer: AuthAccount) {
+    // Store a `CryptoPoops.Collection` in our account storage.
+    signer.save(<- CryptoPoops.createEmptyCollection(), to: /storage/MyCollection)
+    
+    // Link it to the public.
+    signer.link<&CryptoPoops.Collection>(/public/MyCollection, target: /storage/MyCollection)
+  }
+}
+
+
+Mint NFT transaction as 0x01, minting to 0x03 with 3 variables
+
 
 Read script:
+
