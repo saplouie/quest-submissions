@@ -32,7 +32,7 @@ pub contract CryptoPoops: NonFungibleToken {
   }
   pub resource interface CollectionPublic {
     pub fun deposit(token: @NFT)
-    pub fun getIDs: [UInt64]
+    pub fun getIDs(): [UInt64]
     pub fun borrowAuthNFT(id: UInt64): &NFT
     pub fun withdraw(withdrawID: UInt64)
   }
