@@ -1,6 +1,7 @@
-1. What does "force casting" with as! do? Why is it useful in our Collection? It force changes the type of resource. It is useful because
+1. What does "force casting" with as! do? Why is it useful in our Collection? It force changes the type of resource. It is useful because the NFT standard is too basic and we need to pass the specific NFT type into the collection.
 
-What does auth do? When do we use it?
+
+What does auth do? When do we use it? Auth is used with a reference so that it can later be down cast. We use it during the borrow function so we can downcast &NFT
 
 This last quest will be your most difficult yet. Take this contract:
 
