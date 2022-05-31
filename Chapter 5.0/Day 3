@@ -1,10 +1,12 @@
 1. What does "force casting" with as! do? Why is it useful in our Collection? It force changes the type of resource. It is useful because the NFT standard is too basic and we need to pass the specific NFT type into the collection.
 
 
-What does auth do? When do we use it? Auth is used with a reference so that it can later be down cast. We use it during the borrow function so we can downcast &NFT
+What does auth do? When do we use it? Auth is used with a reference so that it can later be down cast. We used it during the borrow function so we can downcast &NFT
 
 This last quest will be your most difficult yet. Take this contract:
 
+and add a function called borrowAuthNFT just like we did in the section called "The Problem" above. Then, find a way to make it publically accessible to other people so they can read our NFT's metadata. Then, run a script to display the NFTs metadata for a certain id.
+Added CollectionPublic interface in contract and implemented. Added borrowAuthNFT under Collection resource
 import NonFungibleToken from 0x02
 pub contract CryptoPoops: NonFungibleToken {
   pub var totalSupply: UInt64
@@ -28,8 +30,14 @@ pub contract CryptoPoops: NonFungibleToken {
       self.luckyNumber = _luckyNumber
     }
   }
+  pub resource interface CollectionPublic {
+    pub fun deposit(token: @NFT)
+    pub fun getIDs: [UInt64]
+    pub fun borrowAuthNFT(id: UInt64): &NFT
+    pub fun withdraw(withdrawID: UInt64)
+  }
 
-  pub resource Collection: NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic {
+  pub resource Collection: NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic, CollectionPublic {
     pub var ownedNFTs: @{UInt64: NonFungibleToken.NFT}
 
     pub fun withdraw(withdrawID: UInt64): @NonFungibleToken.NFT {
@@ -89,6 +97,11 @@ pub contract CryptoPoops: NonFungibleToken {
     self.account.save(<- create Minter(), to: /storage/Minter)
   }
 }
-and add a function called borrowAuthNFT just like we did in the section called "The Problem" above. Then, find a way to make it publically accessible to other people so they can read our NFT's metadata. Then, run a script to display the NFTs metadata for a certain id.
 
 You will have to write all the transactions to set up the accounts, mint the NFTs, and then the scripts to read the NFT's metadata. We have done most of this in the chapters up to this point, so you can look for help there :)
+
+Create collection Transaction:
+
+Mint NFT transaction:
+
+Read script:
