@@ -11,6 +11,7 @@ Added CollectionPublic interface in contract and implemented for resource Collec
 Added borrowAuthNFT under Collection resource
 
 ...........
+
   pub resource interface CollectionPublic {
     pub fun deposit(token: @NonFungibleToken.NFT)
     pub fun getIDs(): [UInt64]
@@ -23,6 +24,7 @@ Added borrowAuthNFT under Collection resource
     pub var ownedNFTs: @{UInt64: NonFungibleToken.NFT}
 
 .............
+
     pub fun borrowAuthNFT(id: UInt64): &NFT {
       let ref = &self.ownedNFTs[id] as auth &NonFungibleToken.NFT
       return ref as! &NFT
@@ -38,7 +40,7 @@ Created collection in 0x03
 Mint NFT transaction as 0x01, minting to 0x03
 ![image](https://user-images.githubusercontent.com/26511703/171559901-de4225cb-75ad-413f-9b01-39f1350010ac.png)
 
-Read and log fields from 0x03, id 2"
-![image](https://user-images.githubusercontent.com/26511703/171560378-f7028ef3-f6bb-46bc-9ff2-bab5263ff658.png)
+Read and return favorite food from 0x03, id 2"
+![image](https://user-images.githubusercontent.com/26511703/171562732-7ca16072-e556-4c11-82c4-1c671fc9acbc.png)
 
 
