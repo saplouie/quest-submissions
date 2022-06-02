@@ -40,7 +40,7 @@ Created collection in 0x03
 Mint NFT transaction as 0x01, minting to 0x03
 ![image](https://user-images.githubusercontent.com/26511703/171559901-de4225cb-75ad-413f-9b01-39f1350010ac.png)
 
-Read and return favorite food from 0x03, id 2"
+Read and return favorite food from 0x03, id 2
 ![image](https://user-images.githubusercontent.com/26511703/171562732-7ca16072-e556-4c11-82c4-1c671fc9acbc.png)
 
 
